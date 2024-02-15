@@ -5,17 +5,17 @@ const Separator = ({
 }) => {
   switch (size) {
     case "small":
-      return <div className="h-small col-span-12"></div>;
+      return <div className="col-span-12 h-small"></div>;
     case "medium":
-      return <div className="h-medium col-span-12"></div>;
+      return <div className="col-span-12 h-medium"></div>;
     case "large":
-      return <div className="h-large col-span-12"></div>;
+      return <div className="col-span-12 h-large"></div>;
     case "xlarge":
-      return <div className="h-xlarge col-span-12"></div>;
+      return <div className="col-span-12 h-xlarge"></div>;
     case "xxlarge":
-      return <div className="h-xxlarge col-span-12"></div>;
+      return <div className="col-span-12 h-auto md:h-xxlarge "></div>;
     default:
-      return <div className="h-small col-span-12"></div>;
+      return <div className="col-span-12 h-small"></div>;
   }
 };
 
