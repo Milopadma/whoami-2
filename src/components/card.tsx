@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Button from "./button";
+import { useNavigate } from "react-router-dom";
 import { useHoverStore } from "../hover-store";
 
 interface CardProps {
@@ -15,6 +15,10 @@ interface CardProps {
 function Card({ data, style }: CardProps) {
   const { hoveredCard, setHoveredCard } = useHoverStore();
   const isHovered = hoveredCard === data.title;
+
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const navigate = useNavigate();
 
   const [coords, setCoords] = useState({ x: 0, y: 0 });
 
@@ -40,6 +44,12 @@ function Card({ data, style }: CardProps) {
       onMouseEnter={() => setHoveredCard(data.title)}
       onMouseLeave={() => setHoveredCard(null)}
       onMouseMove={handleMouseMove}
+      onClick={() => {
+        setIsExpanded(true);
+        setTimeout(() => {
+          navigate("/");
+        }, 500);
+      }}
       style={{
         position: "relative",
         cursor: isHovered ? "none" : "auto",
@@ -47,9 +57,9 @@ function Card({ data, style }: CardProps) {
       }}
       className={`flex flex-col gap-4 transition-all duration-300 ${
         isHovered ? "cursor-none pb-8 pt-8" : ""
-      }`}
+      } ${isExpanded ? "card--expanded" : ""}`}
     >
-      <a href={data.linkUrl} className="cursor-none">
+      <div className="cursor-none">
         <div
           style={{
             position: "fixed",
@@ -74,7 +84,7 @@ function Card({ data, style }: CardProps) {
         <div className="text-lg leading-5">
           <p>{data.description}</p>
         </div>
-      </a>
+      </div>
     </div>
   );
 }
