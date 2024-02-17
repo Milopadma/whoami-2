@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Button from "./button";
+import { useHoverStore } from "../hover-store";
 
 interface CardProps {
   data: {
@@ -8,10 +9,13 @@ interface CardProps {
     imageUrl: string;
     linkUrl: string;
   };
+  style?: React.CSSProperties;
 }
 
-function Card({ data }: CardProps) {
-  const [isHovered, setIsHovered] = useState(false);
+function Card({ data, style }: CardProps) {
+  const { hoveredCard, setHoveredCard } = useHoverStore();
+  const isHovered = hoveredCard === data.title;
+
   const [coords, setCoords] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (event: { clientX: any; clientY: any }) => {
@@ -33,11 +37,17 @@ function Card({ data }: CardProps) {
 
   return (
     <div
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => setHoveredCard(data.title)}
+      onMouseLeave={() => setHoveredCard(null)}
       onMouseMove={handleMouseMove}
-      style={{ position: "relative", cursor: isHovered ? "none" : "auto" }}
-      className={`flex flex-col gap-4 transition-all duration-300 ${isHovered ? "cursor-none pb-8 pt-8" : ""}`}
+      style={{
+        position: "relative",
+        cursor: isHovered ? "none" : "auto",
+        ...style,
+      }}
+      className={`flex flex-col gap-4 transition-all duration-300 ${
+        isHovered ? "cursor-none pb-8 pt-8" : ""
+      }`}
     >
       <a href={data.linkUrl} className="cursor-none">
         <div
