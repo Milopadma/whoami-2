@@ -37,6 +37,7 @@ function Card({ data }: CardProps) {
       onMouseLeave={() => setIsHovered(false)}
       onMouseMove={handleMouseMove}
       style={{ position: "relative", cursor: isHovered ? "none" : "auto" }}
+      className={`flex flex-col gap-4 transition-all duration-300 ${isHovered ? "cursor-none pb-8 pt-8" : ""}`}
     >
       <a href={data.linkUrl} className="cursor-none">
         <div
