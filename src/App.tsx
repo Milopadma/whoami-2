@@ -1,8 +1,10 @@
+import Button from "./components/button";
+
 function App() {
   return (
     <>
       <div className="flex h-screen flex-col items-center justify-between">
-        <div className="grid grid-cols-12 bg-white ">
+        <div className="grid grid-cols-12 bg-white">
           {/* first part */}
           <>
             <div className="col-span-3 col-start-2 md:col-span-1 md:col-start-2">
@@ -16,18 +18,18 @@ function App() {
             </div>
           </>
         </div>
-        <div className="grid grid-cols-12 bg-white pb-24">
+        <div className="grid w-full grid-cols-12 bg-white pb-24">
           {/* second part */}
           <>
-            <div className="col-span-3 col-start-2 row-start-6 break-words">
+            <div className="col-span-3 col-start-2 row-start-6 break-words md:col-start-2">
               <h1 className="text-2xl leading-6">www.milopadma.com</h1>
             </div>
             <div className="col-span-3 col-start-7 row-start-6">
-              <h1 className="text-2xl">
-                <a href="/projects" className="animate-underline italic">
-                  <div className="leading-6">view my projects here</div>
-                </a>
-              </h1>
+              <Button
+                label="view my projects here"
+                type="secondary"
+                linkTo="projects"
+              ></Button>
             </div>
           </>
         </div>

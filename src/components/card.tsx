@@ -1,6 +1,16 @@
 import { useState } from "react";
+import Button from "./button";
 
-function Card() {
+interface CardProps {
+  data: {
+    title: string;
+    description: string;
+    imageUrl: string;
+    linkUrl: string;
+  };
+}
+
+function Card({ data }: CardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [coords, setCoords] = useState({ x: 0, y: 0 });
 
@@ -28,41 +38,32 @@ function Card() {
       onMouseMove={handleMouseMove}
       style={{ position: "relative", cursor: isHovered ? "none" : "auto" }}
     >
-      <div
-        style={{
-          position: "fixed",
-          top: coords.y - 50, // subtract half the height when hovered
-          left: coords.x - 50, // subtract half the width when hovered
-          width: isHovered ? "100px" : "0",
-          height: isHovered ? "100px" : "0",
-          transition: "width 0.5s, height 0.5s", // removed transition from top and left
-          pointerEvents: "none", // This makes the div ignore mouse events
-        }}
-      >
-        <img
-          src="test.jpeg"
-          alt="description"
+      <a href={data.linkUrl} className="cursor-none">
+        <div
           style={{
-            width: "100%",
-            height: "100%",
+            position: "fixed",
+            top: coords.y - 50, // subtract half the height when hovered
+            left: coords.x - 50, // subtract half the width when hovered
+            width: isHovered ? "100px" : "0",
+            height: isHovered ? "100px" : "0",
+            transition: "width 0.5s, height 0.5s", // removed transition from top and left
           }}
-        />
-      </div>
-      <h1 className="text-2xl leading-6">Community App</h1>
-      <div className="text-lg leading-5">
-        <p>
-          A community app that connects people with the same interests and
-          hobbies.
-        </p>
-        <p>This app is built using React Native and Firebase as the backend.</p>
-      </div>
-      <div className="text-lg leading-6">
-        <p>
-          <a href="" className="animate-underline italic">
-            see more
-          </a>
-        </p>
-      </div>
+          className="pointer-events-none cursor-none"
+        >
+          <img
+            src="test.jpeg"
+            alt="description"
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+          />
+        </div>
+        <h1 className="text-2xl leading-6">{data.title}</h1>
+        <div className="text-lg leading-5">
+          <p>{data.description}</p>
+        </div>
+      </a>
     </div>
   );
 }

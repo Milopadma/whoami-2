@@ -18,6 +18,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <div className="md:pt-8">
+      <RouterProvider router={router}></RouterProvider>
+    </div>
   </React.StrictMode>,
 );
