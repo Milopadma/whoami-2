@@ -79,7 +79,7 @@ function App() {
           </div>
         </div>
       </div>
-      <div className="col-span-6 col-start-1 mt-24 flex w-full flex-col items-center bg-neutral-800 p-20 text-2xl tracking-tighter text-zinc-50">
+      <div className="debug col-span-6 col-start-1 mt-24 flex w-full flex-col items-center bg-neutral-800 p-20 text-2xl tracking-tighter text-zinc-50">
         <div className="mt-56">im open to work, shoot a message!</div>
         <div className="mt-16 text-zinc-50">
           my name is
