@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  font-family: "Helvetica", sans-serif;
+  font-family: "Helvetica", "Roboto", sans-serif;
 }
 
 .test {
@@ -24,4 +24,10 @@ div {
 
 .animate-underline:hover {
   background-size: 100% 2px;
+}
+
+@base {
+  .debug {
+    border: 1px solid red;
+  }
 }

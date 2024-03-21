@@ -1,43 +1,98 @@
-import Button from "./components/button";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 function App() {
+  const portfolioRef = useRef(null);
+  const aboutRef = useRef(null);
+  const contactRef = useRef(null);
+
+  useGSAP(() => {
+    gsap.to(portfolioRef.current, {
+      color: "black",
+      textShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+      duration: 0.001,
+      scrollTrigger: {
+        trigger: portfolioRef.current,
+        start: "top center",
+        end: "top 250px",
+        toggleActions: "play reverse play reverse",
+      },
+    });
+    gsap.to(aboutRef.current, {
+      color: "black",
+      textShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+      duration: 0.001,
+      scrollTrigger: {
+        trigger: aboutRef.current,
+        start: "top center",
+        end: "top 250px",
+        toggleActions: "play reverse play reverse",
+      },
+    });
+    gsap.to(contactRef.current, {
+      color: "black",
+      textShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+      duration: 0.001,
+      scrollTrigger: {
+        trigger: contactRef.current,
+        start: "top center",
+        end: "top 250px",
+        toggleActions: "play reverse play reverse",
+      },
+    });
+  });
+
   return (
-    <>
-      <div className="flex h-screen flex-col items-center justify-between">
-        <div className="grid grid-cols-12 bg-white">
-          {/* first part */}
-          <>
-            <div className="col-span-3 col-start-2 md:col-span-1 md:col-start-2">
-              <h1 className="text-2xl">hello</h1>
-            </div>
-            <div className="col-span-5 col-start-7 md:col-span-3 md:col-start-7">
-              <h1 className="text-2xl leading-6">
-                a software engineer from bali interested in impacting lives
-                around him
-              </h1>
-            </div>
-          </>
+    <div className="grid w-screen grid-cols-6 flex-col bg-zinc-50">
+      <div className="col-span-4 col-start-2 mt-44 flex w-full flex-col items-start text-6xl tracking-tighter">
+        <div className="text-2xl font-extralight tracking-tighter text-neutral-800">
+          hello, im mylo
         </div>
-        <div className="grid w-full grid-cols-12 bg-white pb-24">
-          {/* second part */}
-          <>
-            <div className="col-span-3 col-start-2 row-start-6 break-words md:col-start-2">
-              <h1 className="text-2xl leading-6">www.milopadma.com</h1>
-            </div>
-            <div className="col-span-3 col-start-7 row-start-6">
-              <Button
-                label="view my projects here"
-                type="secondary"
-                linkTo="projects"
-              ></Button>
-            </div>
-          </>
+        <div className="mt-24 text-2xl font-normal tracking-tighter text-neutral-800">
+          a software engineer from bali interested in positively impacting lives
+          around him
+        </div>
+        <div className="mt-32">
+          <a
+            className="hoverBold text-black text-opacity-5 transition-all duration-500 hover:text-opacity-100"
+            href="/portfolio"
+            ref={portfolioRef}
+          >
+            portfolio
+          </a>
+          <div
+            className="hoverBold text-black text-opacity-5 transition-all duration-500 hover:text-opacity-100"
+            ref={aboutRef}
+          >
+            about
+          </div>
+          <div
+            className="text-black text-opacity-5 transition-all duration-500 hover:text-opacity-100"
+            ref={contactRef}
+          >
+            contact
+          </div>
         </div>
       </div>
-      <div className="grid h-24 grid-cols-12 items-center justify-center bg-white">
-        <h1 className="col-span-3 col-start-2">2024</h1>
+      <div className="col-span-6 col-start-1 mt-24 flex w-full flex-col items-center bg-neutral-800 p-20 text-2xl tracking-tighter text-zinc-50">
+        <div className="mt-56">im open to work, shoot a message!</div>
+        <div className="mt-16 text-zinc-50">
+          my name is
+          <span className="text-zinc-50 text-opacity-15"> john doe</span>,<br />
+          and i would like to tell you that
+          <span className="text-zinc-50 text-opacity-15">
+            i want to know how much do you charge
+          </span>
+          .
+        </div>
+        <div className="mb-56 mt-16 self-end text-right font-bold">submit</div>
       </div>
-    </>
+    </div>
   );
 }
 
