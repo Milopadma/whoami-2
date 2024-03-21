@@ -5,6 +5,7 @@ import App from "./App.tsx";
 import "./index.css";
 import Projects from "./projects.tsx";
 import Portfolio from "./portfolio.tsx";
+import About from "./about.tsx";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   {
     path: "/portfolio",
     element: <Portfolio />,
+  },
+  {
+    path: "/about",
+    element: <About />,
   },
 ]);
 

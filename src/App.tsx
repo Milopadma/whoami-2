@@ -49,15 +49,15 @@ function App() {
 
   return (
     <div className="grid w-screen grid-cols-6 flex-col bg-zinc-50">
-      <div className="col-span-4 col-start-2 mt-44 flex w-full flex-col items-start text-6xl tracking-tighter">
+      <div className="col-span-4 col-start-2 mt-44 flex h-screen w-full flex-col items-start text-6xl tracking-tighter">
         <div className="text-2xl font-extralight tracking-tighter text-neutral-800">
           hello, im mylo
         </div>
-        <div className="mt-24 text-2xl font-normal tracking-tighter text-neutral-800">
+        <div className="mt-24 max-w-[500px] text-2xl font-normal tracking-tighter text-neutral-800">
           a software engineer from bali interested in positively impacting lives
           around him
         </div>
-        <div className="mt-32">
+        <div className="mt-32 flex flex-col md:mt-64">
           <a
             className="hoverBold text-black text-opacity-5 transition-all duration-500 hover:text-opacity-100"
             href="/portfolio"
@@ -65,32 +65,44 @@ function App() {
           >
             portfolio
           </a>
-          <div
+          <a
             className="hoverBold text-black text-opacity-5 transition-all duration-500 hover:text-opacity-100"
+            href="/about"
             ref={aboutRef}
           >
             about
-          </div>
-          <div
+          </a>
+          <a
             className="text-black text-opacity-5 transition-all duration-500 hover:text-opacity-100"
             ref={contactRef}
           >
             contact
-          </div>
+          </a>
         </div>
       </div>
-      <div className="debug col-span-6 col-start-1 mt-24 flex w-full flex-col items-center bg-neutral-800 p-20 text-2xl tracking-tighter text-zinc-50">
-        <div className="mt-56">im open to work, shoot a message!</div>
-        <div className="mt-16 text-zinc-50">
-          my name is
-          <span className="text-zinc-50 text-opacity-15"> john doe</span>,<br />
-          and i would like to tell you that
-          <span className="text-zinc-50 text-opacity-15">
-            i want to know how much do you charge
-          </span>
-          .
+      <div className="col-span-6 col-start-1 mt-24 grid w-full grid-cols-6 items-start bg-neutral-800 text-2xl tracking-tighter text-zinc-50">
+        <div className="col-span-4 col-start-2">
+          <div className="mt-56">I'm open to work, shoot a message!</div>
+          <div className="mt-16 text-zinc-50">
+            my name is
+            <span
+              className="border-b-2 border-white bg-transparent px-1 pb-1 text-zinc-50"
+              id="name"
+              contentEditable
+            ></span>
+            ,<br />
+            and I would like to tell you that
+            <span
+              className="border-b-2 border-white bg-transparent px-1 pb-1 text-zinc-50"
+              id="message"
+              contentEditable
+            ></span>
+            .
+          </div>
+          <button className="underline-animation relative mb-56 mt-16 self-end text-right font-bold">
+            submit
+          </button>
         </div>
-        <div className="mb-56 mt-16 self-end text-right font-bold">submit</div>
       </div>
     </div>
   );
