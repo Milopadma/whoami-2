@@ -19,7 +19,7 @@ function App() {
       scrollTrigger: {
         trigger: portfolioRef.current,
         start: "top center",
-        end: "top 250px",
+        end: "top 312px",
         toggleActions: "play reverse play reverse",
       },
     });
@@ -30,7 +30,7 @@ function App() {
       scrollTrigger: {
         trigger: aboutRef.current,
         start: "top center",
-        end: "top 250px",
+        end: "top 312px",
         toggleActions: "play reverse play reverse",
       },
     });
@@ -41,7 +41,7 @@ function App() {
       scrollTrigger: {
         trigger: contactRef.current,
         start: "top center",
-        end: "top 250px",
+        end: "top 312px",
         toggleActions: "play reverse play reverse",
       },
     });
@@ -75,12 +75,16 @@ function App() {
           <a
             className="text-black text-opacity-5 transition-all duration-500 hover:text-opacity-100"
             ref={contactRef}
+            href="#contact"
           >
             contact
           </a>
         </div>
       </div>
-      <div className="col-span-6 col-start-1 mt-24 grid w-full grid-cols-6 items-start bg-neutral-800 text-2xl tracking-tighter text-zinc-50">
+      <div
+        className="col-span-6 col-start-1 mt-24 grid w-full grid-cols-6 items-start bg-neutral-800 text-2xl tracking-tighter text-zinc-50"
+        id="contact"
+      >
         <div className="col-span-4 col-start-2">
           <div className="mt-56">I'm open to work, shoot a message!</div>
           <div className="mt-16 text-zinc-50">
