@@ -3,6 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { useGSAP } from "@gsap/react";
+import { sendEmail } from "./resend";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -46,6 +47,15 @@ function App() {
       },
     });
   });
+
+  // handle submit form
+  const handleSubmit = () => {
+    console.log("submit");
+    const name = document.getElementById("name")!.innerText;
+    const message = document.getElementById("message")!.innerText;
+    const contact = document.getElementById("contact")!.innerText;
+    sendEmail("name:" + name + "\n message" + message + "\n contact" + contact);
+  };
 
   return (
     <div className="grid w-screen grid-cols-6 flex-col bg-zinc-50">
@@ -101,9 +111,18 @@ function App() {
               id="message"
               contentEditable
             ></span>
+            . you can contact me on
+            <span
+              className="text-zing-50 border-b-2 border-white bg-transparent px-1 pb-1"
+              id="contact"
+              contentEditable
+            ></span>
             .
           </div>
-          <button className="underline-animation relative mb-56 mt-16 self-end text-right font-bold">
+          <button
+            onClick={() => handleSubmit()}
+            className="underline-animation relative mb-56 mt-16 self-end text-right font-bold"
+          >
             submit
           </button>
         </div>

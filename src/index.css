@@ -78,6 +78,11 @@ div {
   color: #a0aec0;
 }
 
+#contact[contentEditable]:empty::before {
+  content: "@john_doe on instagram";
+  color: #a0aec0;
+}
+
 @layer utilities {
   .underline-animation {
     position: relative;
