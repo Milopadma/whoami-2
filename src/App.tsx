@@ -3,7 +3,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { useGSAP } from "@gsap/react";
-import { sendEmail } from "./resend";
+import { trpc } from "./main";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -49,12 +49,15 @@ function App() {
   });
 
   // handle submit form
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log("submit");
     const name = document.getElementById("name")!.innerText;
     const message = document.getElementById("message")!.innerText;
     const contact = document.getElementById("contact")!.innerText;
-    sendEmail("name:" + name + "\n message" + message + "\n contact" + contact);
+    const result = await trpc.email.mutate(
+      "name:" + name + "\n message" + message + "\n contact" + contact,
+    );
+    console.log(result);
   };
 
   return (

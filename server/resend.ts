@@ -2,7 +2,9 @@
 
 import { Resend } from "resend";
 
-const token = Bun.env.RESEND_API;
+const token = Bun.env.VITE_RESEND_API;
+
+console.log({ token });
 
 const resend = new Resend(token);
 

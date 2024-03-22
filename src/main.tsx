@@ -7,6 +7,13 @@ import Projects from "./projects.tsx";
 import Portfolio from "./portfolio.tsx";
 import About from "./about.tsx";
 
+import { createTRPCClient, httpBatchLink } from "@trpc/client";
+import type { AppRouter } from "../server";
+
+export const trpc = createTRPCClient<AppRouter>({
+  links: [httpBatchLink({ url: "http://localhost:3000" })],
+});
+
 const router = createBrowserRouter([
   {
     path: "/",
