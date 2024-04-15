@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 import { useGSAP } from "@gsap/react";
 import { trpc } from "./main";
+import Separator from "./components/separator";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,38 +16,42 @@ function App() {
   useGSAP(() => {
     gsap.to(portfolioRef.current, {
       color: "black",
-      textShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+      textShadow: "0px 0px 10px rgba(0, 0, 0, 0.9)",
       duration: 0.001,
       scrollTrigger: {
         trigger: portfolioRef.current,
         start: "top center",
-        end: "top 312px",
+        end: "+=200px",
         toggleActions: "play reverse play reverse",
       },
     });
     gsap.to(aboutRef.current, {
       color: "black",
-      textShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+      textShadow: "0px 0px 10px rgba(0, 0, 0, 0.9)",
       duration: 0.001,
       scrollTrigger: {
         trigger: aboutRef.current,
         start: "top center",
-        end: "top 312px",
+        end: "+=200px",
         toggleActions: "play reverse play reverse",
       },
     });
     gsap.to(contactRef.current, {
       color: "black",
-      textShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+      textShadow: "0px 0px 10px rgba(0, 0, 0, 0.9)",
       duration: 0.001,
       scrollTrigger: {
         trigger: contactRef.current,
         start: "top center",
-        end: "top 312px",
+        end: "+=200px",
         toggleActions: "play reverse play reverse",
       },
     });
   });
+
+  useEffect(() => {
+    console.log("ref moved");
+  }, [portfolioRef, aboutRef, contactRef]);
 
   // handle submit form
   const handleSubmit = async () => {
@@ -62,40 +67,50 @@ function App() {
 
   return (
     <div className="grid w-screen grid-cols-6 flex-col bg-zinc-50">
-      <div className="col-span-4 col-start-2 mt-44 flex h-screen w-full flex-col items-start text-6xl tracking-tighter">
+      <div className="col-span-4 col-start-2 flex h-screen w-full flex-col items-start text-6xl tracking-tighter">
+        <Separator size="large" />
         <div className="text-2xl font-extralight tracking-tighter text-neutral-800">
           hello, im mylo
         </div>
-        <div className="mt-24 max-w-[500px] text-2xl font-normal tracking-tighter text-neutral-800">
+        <Separator size="small" />
+        <div className="max-w-[500px] text-2xl font-normal tracking-tighter text-neutral-800">
           a software engineer from bali interested in positively impacting lives
           around him
         </div>
-        <div className="mt-32 flex flex-col md:mt-64">
-          <a
-            className="hoverBold text-black text-opacity-5 transition-all duration-500 hover:text-opacity-100"
-            href="/portfolio"
-            ref={portfolioRef}
-          >
-            portfolio
+        <Separator size="small" />
+        <div className="max-w-[500px] text-2xl font-normal tracking-tighter text-neutral-800">
+          mainly on nextjs + tailwind projects, but also go-lang, and sometimes
+          rust!
+        </div>
+        <Separator size="large" />
+        <div className="flex flex-col">
+          <a href="/portfolio" ref={portfolioRef}>
+            <span className="text-neutral-900/5 transition-all duration-300 hover:text-neutral-900">
+              portfolio
+            </span>
           </a>
           <a
-            className="hoverBold text-black text-opacity-5 transition-all duration-500 hover:text-opacity-100"
+            className="text-black text-opacity-5 transition-all duration-500 hover:text-opacity-100"
             href="/about"
             ref={aboutRef}
           >
-            about
+            <span className="text-neutral-900/5 transition-all duration-300 hover:text-neutral-900">
+              about
+            </span>
           </a>
           <a
             className="text-black text-opacity-5 transition-all duration-500 hover:text-opacity-100"
             ref={contactRef}
             href="#contact"
           >
-            contact
+            <span className="text-neutral-900/5 transition-all duration-300 hover:text-neutral-900">
+              contact
+            </span>
           </a>
         </div>
       </div>
       <div
-        className="col-span-6 col-start-1 mt-24 grid w-full grid-cols-6 items-start bg-neutral-800 text-2xl tracking-tighter text-zinc-50"
+        className="col-span-6 col-start-1 grid h-screen w-full grid-cols-6 items-center bg-neutral-800 text-2xl tracking-tighter text-zinc-50"
         id="contact"
       >
         <div className="col-span-4 col-start-2">

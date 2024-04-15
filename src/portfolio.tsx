@@ -69,7 +69,7 @@ export default Portfolio;
 
 export const Container = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="mt-12 grid gap-6 sm:grid-cols-1 md:grid-cols-2">
+    <div className="mt-12 grid gap-6 sm:grid-cols-1 md:grid-cols-1">
       {children}
     </div>
   );
@@ -85,16 +85,20 @@ export const Card = ({
   image: string;
 }) => {
   return (
-    <div className="mt-12 flex max-w-[400px] flex-col rounded-2xl bg-zinc-50 pb-16 drop-shadow-xl">
+    <div className="mt-12 flex w-full flex-col rounded-2xl bg-zinc-50 pb-16 drop-shadow-xl">
       <img
         loading="lazy"
         src={image}
-        className="aspect-[1.72] w-full max-w-[500px] rounded-t-2xl"
+        className="aspect-[2.4] w-full rounded-t-2xl"
       />
-      <div className="mt-8 flex flex-col px-4 md:px-16">
-        <div className="font-bold">{title}</div>
-        <div className="mt-2.5 text-base tracking-tighter">website</div>
-        <div className="mt-4">{description}</div>
+      <div className="mt-8 grid grid-cols-2 px-4 md:px-16">
+        <div className="col-start-1">
+          <div className="text-4xl font-bold">{title}</div>
+          <div className="mt-2.5 text-2xl tracking-tighter">see it</div>
+        </div>
+        <div className="col-start-2">
+          <div className="mt-4 text-xl">{description}</div>
+        </div>
       </div>
     </div>
   );
