@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { UserForm } from "./components/form";
+
 import { useGSAP } from "@gsap/react";
 import { trpc } from "./main";
 import Separator from "./components/separator";
@@ -70,7 +72,7 @@ function App() {
     <>
       <div className="grid w-full grid-cols-6 bg-zinc-50 px-4 py-20 text-2xl tracking-tighter text-neutral-800">
         {/* menu */}
-        <Menu />
+        <Menu label="home" />
         <div className="col-span-4 col-start-2 flex h-screen w-full flex-col items-start text-6xl tracking-tighter">
           <Separator size="large" />
           <div className="text-2xl font-extralight tracking-tighter text-neutral-800">
@@ -119,6 +121,7 @@ function App() {
         id="contact"
       >
         <div className="col-span-4 col-start-2">
+          <UserForm />
           <div className="mt-56">I'm open to work, shoot a message!</div>
           <div className="mt-16 text-zinc-50">
             my name is
