@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { trpc } from "./main";
 import Separator from "./components/separator";
+import Menu from "./components/menu";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -66,47 +67,51 @@ function App() {
   };
 
   return (
-    <div className="grid w-screen grid-cols-6 flex-col bg-zinc-50">
-      <div className="col-span-4 col-start-2 flex h-screen w-full flex-col items-start text-6xl tracking-tighter">
-        <Separator size="large" />
-        <div className="text-2xl font-extralight tracking-tighter text-neutral-800">
-          hello, im mylo
-        </div>
-        <Separator size="small" />
-        <div className="max-w-[500px] text-2xl font-normal tracking-tighter text-neutral-800">
-          a software engineer from bali interested in positively impacting lives
-          around him
-        </div>
-        <Separator size="small" />
-        <div className="max-w-[500px] text-2xl font-normal tracking-tighter text-neutral-800">
-          mainly on nextjs + tailwind projects, but also go-lang, and sometimes
-          rust!
-        </div>
-        <Separator size="large" />
-        <div className="flex flex-col">
-          <a href="/portfolio" ref={portfolioRef}>
-            <span className="text-neutral-900/5 transition-all duration-300 hover:text-neutral-900">
-              portfolio
-            </span>
-          </a>
-          <a
-            className="text-black text-opacity-5 transition-all duration-500 hover:text-opacity-100"
-            href="/about"
-            ref={aboutRef}
-          >
-            <span className="text-neutral-900/5 transition-all duration-300 hover:text-neutral-900">
-              about
-            </span>
-          </a>
-          <a
-            className="text-black text-opacity-5 transition-all duration-500 hover:text-opacity-100"
-            ref={contactRef}
-            href="#contact"
-          >
-            <span className="text-neutral-900/5 transition-all duration-300 hover:text-neutral-900">
-              contact
-            </span>
-          </a>
+    <>
+      <div className="grid w-full grid-cols-6 bg-zinc-50 px-4 py-20 text-2xl tracking-tighter text-neutral-800">
+        {/* menu */}
+        <Menu />
+        <div className="col-span-4 col-start-2 flex h-screen w-full flex-col items-start text-6xl tracking-tighter">
+          <Separator size="large" />
+          <div className="text-2xl font-extralight tracking-tighter text-neutral-800">
+            hello, im mylo
+          </div>
+          <Separator size="small" />
+          <div className="max-w-[500px] text-2xl font-normal tracking-tighter text-neutral-800">
+            a software engineer from bali interested in positively impacting
+            lives around him
+          </div>
+          <Separator size="small" />
+          <div className="max-w-[500px] text-2xl font-normal tracking-tighter text-neutral-800">
+            mainly on nextjs + tailwind projects, but also go-lang, and
+            sometimes rust!
+          </div>
+          <Separator size="large" />
+          <div className="flex flex-col">
+            <a
+              className="text-black text-opacity-5 transition-all duration-500 hover:text-opacity-100"
+              href="/about"
+              ref={aboutRef}
+            >
+              <span className="text-neutral-900/5 transition-all duration-300 hover:text-neutral-900">
+                about
+              </span>
+            </a>
+            <a href="/portfolio" ref={portfolioRef}>
+              <span className="text-neutral-900/5 transition-all duration-300 hover:text-neutral-900">
+                portfolio
+              </span>
+            </a>
+            <a
+              className="text-black text-opacity-5 transition-all duration-500 hover:text-opacity-100"
+              ref={contactRef}
+              href="#contact"
+            >
+              <span className="text-neutral-900/5 transition-all duration-300 hover:text-neutral-900">
+                contact
+              </span>
+            </a>
+          </div>
         </div>
       </div>
       <div
@@ -145,7 +150,7 @@ function App() {
           </button>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

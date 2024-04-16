@@ -4,6 +4,7 @@
 
 html {
   font-family: "Helvetica", "Roboto", sans-serif;
+  @apply bg-zinc-50;
 }
 
 .test {
@@ -104,4 +105,9 @@ div {
   .underline-animation:hover::after {
     width: 100%;
   }
+}
+
+* {
+  @apply outline outline-red-300;
+  @apply transition-all duration-500 ease-in-out;
 }

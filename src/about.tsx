@@ -8,7 +8,7 @@ function About() {
   };
 
   return (
-    <div className="mx-auto grid w-full grid-cols-6 bg-white px-4 py-20 text-2xl tracking-tighter text-neutral-800">
+    <div className="mx-auto grid w-full grid-cols-6 bg-zinc-50 px-4 py-20 text-2xl tracking-tighter text-neutral-800">
       <div className="col-span-4 col-start-2">
         <div className="flex w-auto justify-between gap-5 self-stretch whitespace-nowrap">
           <div>about</div>
