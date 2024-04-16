@@ -15,21 +15,27 @@ function Portfolio() {
         <Container>
           <Card
             description="the best wood exporter in indonesia"
-            image="https://via.placeholder.com/500x256"
-            title="asa wood web"
+            image="ss1.png"
+            link="https://blirumah-web.vercel.app"
             key={1}
           />
           <Card
             description="the best wood exporter in indonesia"
-            image="https://via.placeholder.com/500x256"
+            image="ss2.png"
             title="asa wood web"
             key={2}
           />
           <Card
             description="the best wood exporter in indonesia"
-            image="https://via.placeholder.com/500x256"
+            image="ss3.png"
             title="asa wood web"
             key={3}
+          />
+          <Card
+            description="the best wood exporter in indonesia"
+            image="ss4.png"
+            title="asa wood web"
+            key={4}
           />
         </Container>
       </div>
@@ -41,7 +47,7 @@ export default Portfolio;
 
 export const Container = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="mt-12 grid gap-6 sm:grid-cols-1 md:grid-cols-1">
+    <div className="grid gap-6 p-4 sm:grid-cols-1 md:grid-cols-1">
       {children}
     </div>
   );
@@ -50,28 +56,23 @@ export const Container = ({ children }: { children: React.ReactNode }) => {
 export const Card = ({
   title,
   description,
+  link,
   image,
 }: {
-  title: string;
+  title?: string;
   description: string;
   image: string;
+  link?: string;
 }) => {
   return (
-    <div className="mt-12 flex w-full flex-col rounded-2xl bg-zinc-50 pb-16 drop-shadow-xl">
-      <img
-        loading="lazy"
-        src={image}
-        className="aspect-[2.4] w-full rounded-t-2xl"
-      />
-      {/* <div className="mt-8 grid grid-cols-2 px-4 md:px-16">
-        <div className="col-start-1">
-          <div className="text-4xl font-bold">{title}</div>
-          <div className="mt-2.5 text-2xl tracking-tighter">see it</div>
-        </div>
-        <div className="col-start-2">
-          <div className="mt-4 text-xl">{description}</div>
-        </div>
-      </div> */}
-    </div>
+    <a href={link} target="_blank" rel="noreferrer">
+      <div className="flex w-full flex-col rounded-2xl bg-zinc-50 shadow-lg hover:cursor-pointer hover:brightness-75">
+        <img
+          loading="lazy"
+          src={image}
+          className="aspect-[2.4] w-full rounded-2xl object-cover"
+        />
+      </div>
+    </a>
   );
 };

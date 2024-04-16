@@ -35,7 +35,7 @@ const Menu: React.FC<MenuProps> = ({ label }) => {
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/1c9ee0f7d2ed184709ca3ade9cc59782f8d25ff939d7d037f7787cc16328dfd9?"
-            className="aspect-square w-7 shrink-0"
+            className="aspect-square w-7 shrink-0 hover:cursor-pointer"
           />
         </div>
       </div>
@@ -46,7 +46,7 @@ const Menu: React.FC<MenuProps> = ({ label }) => {
               <Separator size="large" />
               <div
                 onClick={toggleMenu}
-                className="underline-animation max-w-max text-2xl tracking-normal"
+                className="underline-animation max-w-max text-2xl tracking-normal hover:cursor-pointer"
               >
                 close
               </div>

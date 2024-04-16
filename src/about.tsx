@@ -1,50 +1,27 @@
 import * as React from "react";
+import Separator from "./components/separator";
+import Menu from "./components/menu";
 
 function About() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
     <div className="mx-auto grid w-full grid-cols-6 bg-zinc-50 px-4 py-20 text-2xl tracking-tighter text-neutral-800">
       <div className="col-span-4 col-start-2">
-        <div className="flex w-auto justify-between gap-5 self-stretch whitespace-nowrap">
-          <div>about</div>
-          <div onClick={toggleMenu}>
-            {/* Render the hamburger icon */}
-            <img
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/1c9ee0f7d2ed184709ca3ade9cc59782f8d25ff939d7d037f7787cc16328dfd9?"
-              className="aspect-square w-7 shrink-0"
-            />
-          </div>
-        </div>
+        <Menu label="about" />
         <div className="mt-12">
           <div className="mt-8">
-            <p>hello</p>
+            <p className="max-w-[500px]">21 years old, balinese-indonesian.</p>
+            <Separator size="small" />
+            <p className="max-w-[500px]">
+              started webdev in 2022, but always loved game modding and
+              customizing minecraft mods ever since i was gifted a laptop in
+              2014.
+            </p>
+            <Separator size="small" />
+            <p className="max-w-[500px]">
+              now studying for an information systems degree in bali.
+            </p>
           </div>
         </div>
-        {/* Render the menu when isMenuOpen is true */}
-        {isMenuOpen && (
-          <div className="fixed inset-0 z-50 grid grid-cols-6 bg-black">
-            <div className="menu col-span-4 col-start-2 flex items-center">
-              {/* Add your menu items here */}
-              <ul className="text-6xl font-extrabold tracking-tighter text-white md:text-9xl">
-                <a href="/about" className="underline-animation">
-                  about
-                </a>
-                <a href="/portfolio" className="underline-animation">
-                  portfolio
-                </a>
-                <a href="/" className="underline-animation">
-                  home
-                </a>
-              </ul>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
