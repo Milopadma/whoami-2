@@ -1,8 +1,7 @@
 "use server";
 
 import { Resend } from "resend";
-
-const token = Bun.env.VITE_RESEND_API;
+const token = import.meta.env.VITE_RESEND_API;
 
 console.log({ token });
 

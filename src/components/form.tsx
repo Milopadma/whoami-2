@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from "../components/ui/form";
 import { Input } from "../components/ui/input";
+import { trpc } from "../main";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -33,18 +34,19 @@ export function UserForm() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "john doe",
-      message: "i would like to work with you",
-      contact: "@johndoe in instagram",
+      name: "aaaaaaaaaaaaaaaa",
+      message: "aaaaaaaaaaaaa",
+      contact: "aaaaaaaaaaaaaaaa",
     },
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
+
+    await trpc.email.mutate(values.message);
   }
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -55,7 +57,11 @@ export function UserForm() {
             <FormItem>
               <FormLabel>name</FormLabel>
               <FormControl>
-                <Input placeholder="john doe" {...field} />
+                <Input
+                  placeholder="john doe"
+                  {...field}
+                  className="text-black placeholder:text-neutral-300"
+                />
               </FormControl>
               <FormDescription>Your name.</FormDescription>
               <FormMessage />
@@ -67,9 +73,13 @@ export function UserForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Message</FormLabel>
+              <FormLabel>message</FormLabel>
               <FormControl>
-                <Input placeholder="hi" {...field} />
+                <Input
+                  placeholder="hi"
+                  {...field}
+                  className="text-black placeholder:text-neutral-300"
+                />
               </FormControl>
               <FormDescription>Your message.</FormDescription>
               <FormMessage />
@@ -81,16 +91,22 @@ export function UserForm() {
           name="contact"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Contact</FormLabel>
+              <FormLabel>contact</FormLabel>
               <FormControl>
-                <Input placeholder="@john doe in instagram" {...field} />
+                <Input
+                  placeholder="@john doe in instagram"
+                  {...field}
+                  className="text-black placeholder:text-neutral-300"
+                />
               </FormControl>
               <FormDescription>Your contact.</FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <div className="flex w-full justify-center gap-4">
+          <Button type="submit">Submit</Button>
+        </div>
       </form>
     </Form>
   );

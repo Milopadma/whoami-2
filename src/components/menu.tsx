@@ -1,5 +1,5 @@
 import React from "react";
-import Separator from "./separator";
+import Separator from "./spacing";
 
 interface MenuProps {
   label: string;

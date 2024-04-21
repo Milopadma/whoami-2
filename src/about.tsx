@@ -1,6 +1,6 @@
 import * as React from "react";
-import Separator from "./components/separator";
 import Menu from "./components/menu";
+import Spacing from "./components/spacing";
 
 function About() {
   return (
@@ -10,13 +10,13 @@ function About() {
         <div className="mt-12">
           <div className="mt-8">
             <p className="max-w-[500px]">21 years old, balinese-indonesian.</p>
-            <Separator size="small" />
+            <Spacing sm />
             <p className="max-w-[500px]">
               started webdev in 2022, but always loved game modding and
               customizing minecraft mods ever since i was gifted a laptop in
               2014.
             </p>
-            <Separator size="small" />
+            <Spacing sm />
             <p className="max-w-[500px]">
               now studying for an information systems degree in bali.
             </p>
